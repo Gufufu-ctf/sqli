@@ -11,13 +11,13 @@ func GetHalf(min int,max int)int{
 }
 
 
-func FindByDichotomy(f func(int)bool)int{			 //f : 目标大于burp
+func FindByDichotomy(f func(int,int)bool,pos int)int{			 //f : 目标大于burp
 	min := 0
 	max := 300
 	burp := 0
 	for ;; {
 		burp = GetHalf(min,max)
-		if f(burp)  {
+		if f(pos,burp)  {
 			if max-burp == 1{
 				burp = max
 				break
@@ -36,7 +36,8 @@ func FindByDichotomy(f func(int)bool)int{			 //f : 目标大于burp
 }
 
 
-func judge(burp int)bool{    //f eg
+func judge(pos int,burp int)bool{    //f eg
+	pos = pos
 	target := 123
 	if target > burp {
 		return true
